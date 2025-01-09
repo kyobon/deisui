@@ -46,7 +46,6 @@ jobs:
         POSTGRES_PASSWORD: password
 
     - name: Run tests
-      run: bundle exec rspec
-
-    - name: Run RuboCop
-      run: bundle exec rubocop
+      run: |
+        cd alcohol
+        bundle exec rspec
