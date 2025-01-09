@@ -1,0 +1,13 @@
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @user.errors.messages.each do |attribute, messages| %>
+        <% messages.each do |msg| %>
+          <% if msg != "doesn't match Password" %>
+            <li><%= msg %></li>
+          <% end %>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

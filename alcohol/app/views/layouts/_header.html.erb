@@ -1,0 +1,65 @@
+<header class="header">
+<div class="header__menu">
+<div class="header__menu-bar">
+  <%= link_to "泥酔ストッパー", root_path, class: "header-logo" %>
+  <nav class="web-screen">
+    <ul class="bootstrap">
+      <% if logged_in? %>
+      <li class="header__element"><%= link_to "カレンダー", new_record_path, class: "header__element__link"  %></li>
+      <li class="header__element"><%= link_to "レポート", limits_path, class: "header__element__link"  %></li>
+      <% if current_user.admin? %>
+        <li class="header__element"><%= link_to "ユーザ", users_path, class: "header__element__link"  %></li>
+      <% end %>
+      <li class="dropdown header__element">
+        <a href="#" id="account" class="dropdown-toggle header__element__link">
+          アカウント <b class="caret"></b>
+        </a>
+        <ul id="dropdown-menu" class="dropdown-menu">
+          <li><%= link_to "プロフィール設定", edit_user_path(current_user) %></li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "ログアウト", logout_path,
+                                   data: { "turbo-method": :delete } %>
+          </li>
+        </ul>
+      </li>
+      <% else %>
+        <li class="header__element"><%= link_to "ログイン", login_path, class: "header__element__link" %></li>
+      <% end %>
+    </ul>
+  </nav>
+  <!-- 画面幅が一定よりも小さくなった場合に以下は表示 -->
+  <div class="hamburger" id="hamburger">
+    &#9776;  <!-- これは3本線のアイコンを表示するためのコード -->
+  </div>
+</div>
+</div>
+<div class="mobile-screen mobile__menu">
+  <nav class="navbar" id="navbar-menu">
+    <ul class="bootstrap">
+      <% if logged_in? %>
+      <li class="mobile__element"><%= link_to "カレンダー", new_record_path, class: "mobile__element__link"  %></li>
+      <li class="mobile__element"><%= link_to "レポート", limits_path, class: "mobile__element__link"  %></li>
+      <% if current_user.admin? %>
+        <li class="mobile__element"><%= link_to "ユーザ", users_path, class: "mobile__element__link"  %></li>
+      <% end %>
+      <li class="dropdown mobile__element">
+        <a href="#" id="mobile-account" class="dropdown-toggle mobile__element__link">
+          アカウント <b class="caret"></b>
+        </a>
+        <ul id="mobile-dropdown-menu" class="dropdown-menu">
+          <li><%= link_to "プロフィール設定", edit_user_path(current_user) %></li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "ログアウト", logout_path,
+                                   data: { "turbo-method": :delete } %>
+          </li>
+        </ul>
+      </li>
+      <% else %>
+        <li class="mobile__element"><%= link_to "ログイン", login_path, class: "mobile__element__link" %></li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+</header>

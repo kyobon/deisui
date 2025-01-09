@@ -1,0 +1,44 @@
+<div class="calender">
+  <ul class="calender__caption caption">
+    <li><h3>カレンダー</h3></li>
+  </ul>
+  <%= render 'shared/error_messages_record' %>
+  <div class="calender__contents col-md-9 col-sm-12 col-xs-12">
+    <%= month_calendar events: @existing_records, attribute: :drink_day do |date, records| %>
+      <div class="js-modal-open" data-modal-id="modal-<%= date %>" data-drink-day="<%= date %>">
+      <div>
+        <%= date.day %>
+      </div>
+      <% if records!=[] %>
+        <% records.each do |record| %>
+          <% if record.drunk == "ほろ酔い" %>
+            <div class="calender_drunk-flag">
+              <%= image_tag 'horoyoi.png', class: 'calender_drunk-flag-icon' %>
+            </div>
+          <% elsif record.drunk == "酔っ払った" %>
+            <div class="calender_drunk-flag">
+              <%= image_tag 'yopparai.png', class: 'calender_drunk-flag-icon' %>
+            </div>
+          <% elsif record.drunk == "ふらふらする/呂律が回らない" %>
+            <div class="calender_drunk-flag">
+              <%= image_tag 'meitei.png', class: 'calender_drunk-flag-icon' %>
+            </div>
+          <% else %>
+            <div class="calender_drunk-flag">
+              <%= image_tag 'deisui.png', class: 'calender_drunk-flag-icon' %>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+      </div>
+      <div id="records-<%= date %>" data-records-value="<%= records.to_json %>"></div>
+      <% if records!=[] %>
+        <%= render 'shared/modal_window', date: date, records: records %>
+      <% else %>
+        <%= render 'shared/create_record', date: date, records: records  %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+

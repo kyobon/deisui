@@ -1,0 +1,59 @@
+name: push image to ECR and deploy to ECS
+#on:
+  #push:
+    #branches:
+    #  - main
+
+jobs:
+  push:
+    name: push image to ECR and deploy to ECS
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create rails master key for build
+        run: |
+          touch $GITHUB_WORKSPACE/alcohol/config/master.key
+          echo ${{ secrets.RAILS_MASTER_KEY }} > $GITHUB_WORKSPACE/alcohol/config/master.key
+
+      - name: test
+        run: |
+          ls -la
+          pwd
+
+      - uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: 'ap-northeast-1'
+          role-to-assume: 'arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/alcohol-github-actions-role'
+
+      - uses: aws-actions/amazon-ecr-login@v2
+        id: login-ecr
+
+      - name: Build, tag, and push docker image to ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: "alcohol-app"
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          docker build . --tag ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+          docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }}
+          docker tag ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:${{ env.IMAGE_TAG }} ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:latest
+          docker push ${{ env.REGISTRY }}/${{ env.REPOSITORY }}:latest
+
+      - name: Register new ECS task definition
+        run: |
+          aws ecs register-task-definition \
+            --cli-input-json file://task-definition.json
+
+      - name: Force new deployment and wait for services stability in ECS
+        env:
+          CLUSTER_NAME: "alcohol-ecs-cluster"
+          SERVICE_NAME: "alcohol-service"
+          TASK_DEFINITION: "arn:aws:ecs:ap-northeast-1:396913728688:task-definition/alcohol-task-definition"
+        run: |
+          aws ecs update-service --cluster ${{ env.CLUSTER_NAME }} --service ${{ env.SERVICE_NAME }} --task-definition ${{ env.TASK_DEFINITION }}
+

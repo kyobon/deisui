@@ -1,0 +1,21 @@
+<div class="reset-password">
+  <ul class="reset-password__caption caption">
+    <li><h3>パスワード再設定用メールを送信する</h3></li>
+  </ul>
+</div>
+
+<div class="bootstrap reset-password__form">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with(url: password_resets_path, scope: :password_reset) do |f| %>
+        <div class="form-group">
+            <%= f.label :email, "メールアドレス" %>
+            <%= f.email_field :email, class: 'form-control' %>
+        </div>
+        <div class="reset-password__button button" >
+          <%= f.submit "送信", class: "reset-password__button-item button__item", style: "margin:0 auto;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

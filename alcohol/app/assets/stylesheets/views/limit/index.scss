@@ -1,0 +1,227 @@
+/* 飲み会時間の設定と測定ボタン */
+.limit__input {
+  font-weight: bold; 
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  align-items: center; /* 垂直方向の中央寄せ */
+  display: flex;
+  margin-right: 20px;
+  gap: 10px;
+}
+
+.limit__button-icon {
+	display: inline-block;
+	width: 19px;
+	height: 19px;
+	font-size: 20px;
+	position: relative;
+	box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+	cursor: pointer;
+}
+.limit__button-icon span {
+	position: absolute;
+	display: block;
+	top: 30%;
+	left: 30%;
+	width: 56%;
+	height: 56%;
+	border-radius: 50%;
+	margin: -.28em 0 0 -.28em;
+	border: .12em solid black;
+}
+.limit__button-icon span::after {
+	position: absolute;
+	display: block;
+	content: "";
+	top: 72%;
+	left: 50%;
+	width: 72%;
+	height: 36%;
+	background: black;
+	margin: .2em 0 0 .14em;
+	transform: rotate(45deg);
+}
+
+.limit__title {
+  margin: 10px 7% 10px 7%;
+  &-span {
+    font-weight: bold;
+    background: linear-gradient(transparent 60%, rgb(235, 223, 142) 60%);
+  }
+}
+
+/* 飲み会時間の入力フォーム */
+.limit__drinking-hours {
+  margin: 0 8% 0 8%;
+  justify-content: left; /* 水平方向の中央寄せ */
+  align-items: center;      /* 垂直方向の中央寄せ */
+  border-bottom:1px dashed rgb(133, 129, 129);
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  &-form {
+    display: flex;
+    align-items: center; /* 垂直方向の中央寄せ */
+  }
+}
+
+/* インフォメーションボタン */
+.limit__info {
+  width: 15px;
+  margin: 0 5px 0 5px;
+}
+
+
+/* 測定結果の表示（画面幅共通） */
+.limit__result {
+  display: flex;                 // フレックスボックスを使って子要素を並べる
+  text-align: center;
+  
+  &-left {
+    display: flex;
+    flex-direction: column; /* 左側の要素を縦に並べる */
+    margin-left: 7% ;
+  }
+
+  &-origin {
+    height: 150px ;
+    background-color: whitesmoke;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px ;
+    padding: 0 5%;
+    p {
+      text-decoration: underline;
+      text-decoration-color: rgb(193, 191, 191);
+      text-underline-offset: 5px;
+    }
+  }
+
+  &-advise {
+    height: 150px ;
+    background-color: whitesmoke;
+    margin-bottom: 20px;
+    p {
+      text-align: center;
+      text-decoration: underline;
+      font-weight: bold;
+      text-decoration-color: rgb(193, 191, 191);
+      text-underline-offset: 5px;
+    }
+    &-content {
+      text-align: left;
+      margin: 0 15px;
+    }
+  }
+
+  &-conversion {
+    height: 330px;
+    margin-right: 7%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    p {
+      text-decoration: underline;
+      text-decoration-color: rgb(193, 191, 191);
+      text-underline-offset: 5px;
+      font-weight: bold;
+    }
+    ul{
+      padding: 0 5%;
+      li {
+        justify-content: space-between;
+        list-style: none;
+        border-bottom:1px dashed rgb(133, 129, 129);
+        margin-bottom: 10px;
+        display: flex; 
+        
+        .limit__result-value .highlighted {
+          position: relative;
+          background: linear-gradient(transparent 60%, rgb(235, 223, 142) 60%);
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.limit__alcohol {
+  font-size: 20px;
+  span {
+    font-size: 50px;
+  }
+}
+
+.yellow_emp {
+  background: linear-gradient(transparent 60%, rgb(235, 223, 142) 60%);
+  font-weight: bold;
+}
+
+/* 飲酒グラフの表示（画面幅共通） */
+.drink-data {
+  margin: 10px 7% 10px 7%;
+}
+
+/* その他データの表示（画面幅共通） */
+.other-data-element {
+  display: flex;
+  margin: 0 2% ;
+  &__content {
+    height: 150px ;
+    background-color: whitesmoke;
+    width: 32%;
+    margin: 10px;
+    text-align: center;
+    p {
+      text-decoration: underline;
+      text-decoration-color: rgb(193, 191, 191);
+      text-underline-offset: 5px;
+      font-weight: bold;
+    }
+    &-value {
+      font-size: 50px;
+    }
+  }
+}
+
+/* 測定結果・飲酒データの表示（画面幅が950px以上の場合） */
+@media screen and (min-width: 950px) {
+  .limit__result {
+    &-left {
+      width: 40% ; 
+      margin-right: 2%;
+    }
+    &-conversion {
+      width: 40% ;
+      margin-left: 2%;
+    }
+  }
+  .other-data-element {
+    &__content {
+      width: 32%;
+    }
+  }
+}
+/* 測定結果・飲酒データの表示（画面幅が950px以下の場合） */
+@media screen and (max-width: 950px) {
+  .limit__result {
+    flex-direction: column; /* 子要素を縦に並べる */
+    align-items: center; /* 水平方向に中央寄せ */
+    &-left {
+      width: 80%;
+      margin-right: 7%;
+    }
+    &-conversion {
+      width: 80% ;
+      margin-left: 7%;
+    }
+  }
+  .other-data-element {
+    flex-direction: column; /* 子要素を縦に並べる */
+    align-items: center; /* 水平方向に中央寄せ */
+    &__content {
+      width: 80%;
+    }
+  }
+}

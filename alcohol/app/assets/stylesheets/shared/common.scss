@@ -1,0 +1,131 @@
+@import "../initializers/initializer";
+
+/*Bootstrap読み込み*/
+.bootstrap{
+  /*@import "bootstrap-sprockets";*/
+  @import "bootstrap";
+}
+
+/*ボタン*/
+.button__item {
+  background: #eee;
+  border-radius: 9999px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 250px;
+  width: 120px;
+  padding: 10px 25px;
+  font-family: Arial, sans-serif;
+  color: #333333;
+  line-height: 1.8;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+  &:after {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-top: 3px solid #333333;
+    border-right: 3px solid #333333;
+    transform: rotate(45deg) translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    border-radius: 1px;
+    transition: 0.3s ease-in-out;
+  }
+  &:hover:after {
+    border-color: #FFF;
+  }
+  &:hover {
+    @extend .yellow-back;
+  }
+
+}
+.button ul{
+  display: flex;
+  justify-content: center;
+  text-align: center !important;
+  li {
+    display: inline-block !important;
+    padding: 10px 15px;
+  }
+}
+
+/*見出し*/
+.caption {
+  @extend .indent;
+  flex-direction: row !important;
+  justify-content: left ;
+  padding: 0 1em;
+  margin: 10px auto !important;
+  color: #474747;
+  background: whitesmoke;/*背景色*/
+  border-left: double 7px #f6d606;/*左線*/
+  border-right: double 7px #f6d606;;/*右線*/
+  display: flex;
+  font-weight: bold;
+  li {
+    display: inline;
+    padding: 0 0.5em;
+  }
+  &__explanation {
+    @extend .indent;
+  }
+  &__caption-2 {
+    @extend .indent;
+    margin: 20px auto !important;
+    border-bottom: double 5px #FFC778;
+    padding-bottom: 0px;
+    font-size: 1.2em;
+    font-weight: bold;
+    &__explanation {
+      @extend .indent;
+    }
+  }
+}
+
+/*字下げ*/
+.indent {
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+/*フォーム*/
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
+input, textarea {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+/* インフォメーションボタン */
+.info-button {
+  width: 15px;
+  margin: 0 5px 0 5px;
+}

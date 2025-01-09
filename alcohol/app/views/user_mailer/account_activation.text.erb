@@ -1,0 +1,5 @@
+<%= @user.name %>さん
+
+泥酔ストッパーへの登録ありがとうございます！ 以下のリンクにアクセスしてアカウントの有効化をお願いします。
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

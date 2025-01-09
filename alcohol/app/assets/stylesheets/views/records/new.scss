@@ -1,0 +1,162 @@
+/* カレンダーの横スクロールの有効化 */
+.calender__contents {
+  overflow-x: auto;
+  white-space: nowrap; /* 中身が折り返されないように設定 */
+}
+
+/* 酔いの程度のアイコンの定義 */
+.calender_drunk-flag {
+  display: flex;                // フレックスボックスを使用
+  justify-content: center;      // 水平方向に中央寄せ
+  align-items: center;          // 垂直方向に中央寄せ
+  &-icon {
+    width: 55px;
+  }
+  &-legend {
+    width: 40px;
+  }
+}
+
+.form-duration-field div{
+  display: flex;
+  align-items: center;
+}
+
+.form-duration-input{
+  width: 80px !important; /* フィールドの幅を調整 */
+  margin-right: 5px; /* フィールド間の余白を調整 */
+}
+
+/* モーダルウィンドウの定義 */
+.js-modal-open {
+  width: 100%; /* カレンダーの日付セルの幅を100%に */
+  height: 100%; /* カレンダーの日付セルの高さを100%に */
+  min-width: 100px;
+  transition: background-color 0.3s ease; /* スムーズな変化を追加 */
+}
+
+.js-modal-open:hover {
+  background-color: rgb(246, 240, 203); /* 枠内全体の背景色を変更（お好みで調整） */
+  cursor: pointer; /* カーソルを変更してクリック可能なことを示す */
+}
+
+.layer {
+  background: rgba(0, 0, 0, .2);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-y: auto; /* スクロールを有効にする */
+
+  /* 追記 */
+  z-index: -1; 
+  opacity: 0;
+  visibility: hidden;
+}
+  
+.modal {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  width: 80%;
+  
+
+  /* 追記 */
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modal__inner {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.25);/* モーダルにシャドウをかける */
+  border-radius: 13px; /* モーダルの角を丸める */
+  display: block;
+  padding: 21px 8px 21px;
+  height: auto;
+  overflow-y: auto; /* スクロールを有効にする */
+}
+
+.modal__content {
+  padding-top: 15px;
+  padding-bottom: 23px;
+}
+
+.modal__button-wrap {
+  position: absolute !important;
+  right: 29px;
+  top: 30px;
+  display: inline-flex;
+}
+
+.close-button {
+  position: absolute;
+  z-index: 999;
+  width: 39px;
+  height: 39px;
+  background: orange;
+  border-radius: 50%;
+  padding: 0;
+  border: transparent;
+  cursor: pointer;
+}
+
+.close-button span {
+  width: 25px;
+  height: 2px;
+  background: #fff;
+  display: inline-block;
+  position: absolute;
+  left: calc(50% - 12px);
+  top: 50%;
+  border-radius: 20px;
+}
+
+.close-button span:nth-child(1) {
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+
+.close-button span:nth-child(2) {
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.layer.is-open {
+  z-index: 998;
+  opacity: 1;
+  display: flex;
+  visibility: visible;
+}
+
+.layer.is-open .modal{
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* フォームの削除ボタンの調整 */
+.form-delete {
+  margin: 10px ;
+}
+
+.form-divider {
+  border: 0; /* デフォルトのボーダーを無効化 */
+  height: 1px; /* 高さを指定 */
+  background-color: #ccc; /* 横線の色 */
+  margin: 10px 0; /* 上下のマージンを調整 */
+  width: 100%; /* 横線の幅を100%に設定 */
+}
+
+/* カレンダーのアイコンの説明 */
+.calender__legend {
+  width: 80%;
+  display: flex;
+  &-element {
+    display: flex;
+    align-items :center;
+    margin-right: 7px;
+  }
+}

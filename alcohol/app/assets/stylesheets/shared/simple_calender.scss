@@ -1,0 +1,28 @@
+.calendar-heading {
+    display: flex; /* 横並びにする */
+    justify-content: space-between;
+    nav {
+        display: flex !important; /* 横並びにする */
+        align-items: center;
+        padding: 10px 0; /* 上下の余白を追加 */
+        list-style-type: none;
+    }
+}
+.simple-calendar__page {
+    flex: 1; /* 各ページが均等に配置される */
+    text-align: center; /* 中央揃えにする */
+    padding: 10px 10px !important; /* 上下の余白を追加 */
+    text-decoration: none;
+}
+.simple-calender__link {
+    text-decoration: none ;
+    color: rgb(232, 209, 62);
+}
+.simple-calender__link:hover {
+    color: rgb(232, 227, 194); /* カーソルを合わせたときのリンクの色を黄色に変更 */
+}
+.calendar-title {
+    font-size: 18px; /* 月と年の表示を強調 */
+    font-weight: bold ;
+    padding: 10px 10px ; /* 上下の余白を追加 */
+  }

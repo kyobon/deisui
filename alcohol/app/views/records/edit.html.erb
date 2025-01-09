@@ -1,0 +1,53 @@
+<div class="bootstrap calender__form">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_with(model: @record) do |f| %>
+        <%= render 'shared/error_messages_record' %>
+
+        <div class="form-group">
+          <%= f.label :name, "飲み会時間" %>
+          <%= f.time_field :time, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :beer, "ビールの杯数" %>
+          <%= f.number_field :beer, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :highball, "ハイボールの杯数" %>
+          <%= f.number_field :highball, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :chuhi, "チューハイの杯数" %>
+          <%= f.number_field :chuhi, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :sake, "日本酒の杯数" %>
+          <%= f.number_field :sake, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :wine, "ワインの杯数" %>
+          <%= f.number_field :wine, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :whiskey, "ウイスキーの杯数" %>
+          <%= f.number_field :whiskey, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :shochu, "焼酎の杯数" %>
+          <%= f.number_field :shochu, class: "form-control" %>
+        </div>
+
+        <div class="calender__button button" >
+          <%= f.submit "更新", class: "calender__button-item button__item", style: "margin:0 auto;" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

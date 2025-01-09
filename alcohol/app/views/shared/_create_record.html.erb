@@ -1,0 +1,95 @@
+<div id="modal-<%= date %>" class="layer js-modal">
+  <div class="modal">
+    <div class="modal__button-wrap">
+      <button class="close-button js-close-button">
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="modal__inner">
+      <div class="modal__contents">
+        <div class="modal__content">
+          <ul class="calender__caption caption">
+            <li><h3>飲酒記録の登録</h3></li>
+          </ul>
+          <div class="bootstrap calender__form">
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <%= form_with(model: @record) do |f| %>
+                  <%= render 'shared/error_messages_record' %>
+
+                  <div class="form-group">
+                    <%= f.label :drink_day, "飲み会実施日" %>
+                    <h4><%= date %></h4>
+                    <%= f.hidden_field :drink_day, value: date %>
+                  </div>
+
+                  <div class="form-group form-duration-field">
+                    <%= label_tag :duration_time, "飲み会の時間" %>
+                    <div>
+                      <%= f.number_field :hours, min: 0, class: "form-control form-duration-input", value: 0 %>
+                      時間
+                      <%= f.number_field :minutes, min: 0, max: 50, step: 10, class: "form-control form-duration-input", value: 0 %>
+                      分
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :beer, "ビールの飲酒量(cc)" %>
+                    <span aria-label="中ジョッキ1杯あたり約350ccです。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+                    <%= f.text_field :beer, min: 0, class: "form-control", value: 0 %>
+                  </div>
+      
+                  <div class="form-group">
+                    <%= f.label :highball, "ハイボールの飲酒量(cc)" %>
+                    <span aria-label="中ジョッキ1杯あたり約350ccです。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+                    <%= f.text_field :highball, min: 0, class: "form-control", value: 0 %>
+                  </div>
+      
+                  <div class="form-group">
+                    <%= f.label :chuhi, "チューハイの飲酒量(cc)" %>
+                    <span aria-label="中ジョッキ1杯あたり約350ccです。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+                    <%= f.text_field :chuhi, min: 0, class: "form-control", value: 0 %>
+                  </div>
+      
+                  <div class="form-group">
+                    <%= f.label :sake, "日本酒の飲酒量(cc)" %>
+                    <span aria-label="おちょこ1杯あたり約45ccです。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+                    <%= f.text_field :sake, min: 0, class: "form-control", value: 0 %>
+                  </div>
+      
+                  <div class="form-group">
+                    <%= f.label :wine, "ワインの飲酒量(cc)" %>
+                    <span aria-label="グラスワイン1杯あたり約120ccです。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+                    <%= f.text_field :wine, min: 0, class: "form-control", value: 0 %>
+                  </div>
+      
+                  <div class="form-group">
+                    <%= f.label :whiskey, "ウイスキーの飲酒量(cc)" %>
+                    <span aria-label="ストレート/ロック1杯あたり約30ccのウイスキーが含まれます。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+                    <%= f.text_field :whiskey, min: 0, class: "form-control", value: 0 %>
+                  </div>
+      
+                  <div class="form-group">
+                    <%= f.label :shochu, "焼酎の飲酒量(cc)" %>
+                    <span aria-label="ストレート/ロック/ソーダ割1杯あたり約90ccの焼酎が含まれます。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+                    <%= f.text_field :shochu, min: 0, class: "form-control", value: 0 %>
+                  </div>
+
+                  <div class="form-group">
+                    <%= f.label :drunk, "酔いの程度" %>
+                    <%= f.select :drunk, [["ほろ酔い", "ほろ酔い"], ["酔っ払った", "酔っ払った"], ["ふらふらする/呂律が回らない", "ふらふらする/呂律が回らない"], ["泥酔", "泥酔"]], {}, class: "form-control" %>
+                  </div>
+
+                  <div class="calender__button button" >
+                    <%= f.submit "登録", class: "calender__button-item button__item", style: "margin:0 auto;" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

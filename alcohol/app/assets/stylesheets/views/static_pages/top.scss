@@ -1,0 +1,127 @@
+@import "../../shared/common";
+
+/*コンテンツ*/
+.contents {
+  background-color: #fff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 10px 0px 50px;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/*アイコン表示*/
+.signup {
+  padding: 0 0px 20px;
+  &__beer {
+    width: 90%;
+    margin: 0 auto 10px;
+    display: block;
+  }
+  &__button {
+    display: flex;
+    justify-content: center; /* 中央寄せ */
+    ul {
+      display: flex;
+      justify-content: center; /* 中央寄せ */
+      padding: 0;
+      list-style: none;
+    }
+  }
+}
+
+/* 画面幅が950px以下の場合のデザイン */
+@media screen and (max-width: 950px) {
+  .signup__button ul {
+    flex-direction: column; /* 子要素を縦に並べる */
+  }
+  .title__name {
+    font-size: 25px !important;
+  }
+  .title__explanation {
+    font-size: 12px !important;
+  }
+  .caption__explanation {
+    font-size: 12px !important;
+  }
+}
+
+/*タイトルのデザイン*/
+.title {
+  display: flex;
+  justify-content: center; /* 水平方向の中央寄せ */
+  align-items: center;     /* 垂直方向の中央寄せ */
+  flex-direction: column;
+  &__name {
+    font-family: '游明朝','Yu Mincho',YuMincho,'Hiragino Mincho Pro',serif;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 0.5em 2em;
+    span {
+      position: relative;
+      background: linear-gradient(transparent 60%, rgb(235, 223, 142) 60%);
+    }
+  }
+}
+
+/*各セクションのタイトルと開閉ボタンの位置関係を調整*/
+.caption-top {
+  justify-content: space-between !important;
+}
+
+/* プラスボタンを押す前は説明文を非表示 */
+.about__explanation, .functions1__explanation, .functions2__explanation, .functions3__explanation {
+  display: none;
+}
+
+/* ドロップダウンメニュー */
+.about__explanation.active, .functions1__explanation.active, .functions2__explanation.active, .functions3__explanation.active {
+  display: block !important;
+  transition: opacity 1s ease-in-out;
+}
+
+/*開閉ボタンの調整*/
+.caption__button {
+  background: #000 ;
+  width: 35px;
+  height: 35px;
+  top: 50%;
+  left: 50%;
+  transform: rotate(0deg);
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100;
+  transition: 0.4s cubic-bezier(0.2, 0.6, 0.3, 1.1);
+}
+
+.caption__button:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 2px;
+  width: 50%;
+  background: white;
+}
+
+.caption__button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 2px;
+  background: white;
+}
+
+.caption__button.clicked {
+  @extend .yellow-back;
+  transform: rotate(360deg);
+}
+
+.caption__button.clicked:before {
+  width: 0;
+}

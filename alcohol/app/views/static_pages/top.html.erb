@@ -1,0 +1,72 @@
+<div class="signup">
+  <%= image_tag 'top.jpg', class: 'signup__beer' %>
+  <div class="title">
+    <div class="title__explanation">
+      「もう二度と酒は飲みません」と君は何回言うんだい？
+    </div>
+    <div class="title__name"><span>泥酔ストッパー</span></div>
+  </div>
+  <div class="signup__button button">
+    <ul>
+      <% unless logged_in? %>
+        <li><%= link_to "新規登録", signup_path, class: "button__item" %></li>
+        <li><%= link_to "ログイン", login_path, class: "button__item" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="about">
+  <ul class="about__caption caption caption-top">
+    <li><h3>アプリ説明</h3></li>
+    <li><div class="caption__button" caption-attr="about__button"></div></li>
+  </ul>
+  <div class="about__explanation caption__explanation">
+    <p>
+      現代社会の荒波を生きる人々にとって、酒は娯楽であり、安らぎであり、逃避先です。<br>
+      しかし、酒との付き合い方を間違えると周りの人に多大の迷惑をかけてしまう、危ない側面を持ち合わせています。​<br>
+      特に、飲み会の場で自分の許容量を超える酒を飲んだ場合、嘔吐・失言だけではなく、最悪の場合死に至るため、自分や周りの人間の身を守るために、己の許容量を知っておくことが必要です。<br>
+      飲酒量を管理することで、お酒での失敗を減らしましょう。​<br>
+    </p>
+  </div>
+</div>
+
+<div class="functions1">
+  <ul class="functions2__caption1 caption caption-top">
+    <li><h3>アルコール許容量の算出</h3></li>
+    <li><div class="caption__button" caption-attr="functions1__button"></div></li>
+  </ul>
+  <div class="functions1__explanation caption__explanation">
+    <p>
+      アルコール摂取量・飲み会時間を日々記録していくことで、飲みすぎた日の記録を元にアルコール摂取許容量が算出されます。<br>
+      （〇時間の飲み会で、ビール〇杯までなら飲んでいい、などが分かります）<br>
+      繰り返し記録していくことで許容量算出の精度が向上するので、飲み会の度に記録していきましょう。
+    </p>
+  </div>
+</div>
+
+<div class="functions2">
+  <ul class="functions2__caption caption caption-top">
+    <li><h3>カレンダー</h3></li>
+    <li><div class="caption__button" caption-attr="functions2__button"></div></li>
+  </ul>
+  <div class="functions2__explanation caption__explanation">
+    <p>
+      カレンダーにより、日別で飲酒量を記録することができます。<br>
+      飲酒量を管理することで、健康増進に役立てましょう。
+    </p>
+  </div>
+</div>
+
+<div class="functions3">
+  <ul class="functions3__caption caption caption-top">
+    <li><h3>アルコール摂取量の推移</h3></li>
+    <li><div class="caption__button" caption-attr="functions3__button"></div></li>
+  </ul>
+  <div class="functions3__explanation caption__explanation">
+    <p>
+      当月のアルコール摂取量の推移が日別でグラフ化されます。<br>
+      適度に飲酒した日/飲みすぎた日が一目で分かるため、飲酒量の管理に役立ちます。<br>
+    </p>
+  </div>
+</div>

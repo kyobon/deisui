@@ -1,0 +1,21 @@
+<div class="profile-title">
+  <ul class="profile-title__caption caption">
+    <li><h3>プロフィール</h3></li>
+  </ul>
+</div>
+<div class="profile-element">
+  <div class="profile-element__name">
+    <h2><%= @user.name %></h2>
+  </div> 
+  <div class="profile-element__report">
+    <div class="profile-element__report-content">
+      <%= @alc_avg %>
+    </div>
+    <div class="profile-element__report-content">
+      <%= @overdrinking_ratio %>
+    </div>
+    <div class="profile-element__report-content">
+      <%= @dead_drunk_count %>
+    </div>
+  </div>
+</div>

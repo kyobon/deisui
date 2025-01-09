@@ -1,0 +1,123 @@
+<div class="limit">
+  <ul class="limit__caption caption">
+    <li><h3>許容量測定</h3></li>
+    <span aria-label="「ふらふらする/呂律が回らない」「泥酔」の日の記録を元に算出されます。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span>
+  </ul>
+  <div class="limit__drinking-hours">
+    <%= form_with(url: limits_path, method: :get, local: true, class: "limit__drinking-hours-form") do |f| %>
+      <div class="limit__input">
+        <%= f.select :drinking_hours, options_for_select((0.5..10).step(0.5).to_a, params[:drinking_hours]), prompt: "飲み会時間を選択してください" %>
+      </div>
+      <div class="limit__button">
+        <%= button_tag(type: "submit", class: "limit__button-icon") do %>
+          <span></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="limit__title">
+    <span class="limit__title-span">測定結果</span>
+    <span aria-label="飲み会時間を選択すると表示されます。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'limit__info' %></span>
+  </div>
+  <div class="limit__result">
+    <div class="limit__result-left">
+      <div class="limit__result-origin">
+        <p>許容アルコール量は・・・</p>
+        <div class="limit__alcohol">
+          <% if @limit_alc == "-" %>
+            <h2><%= @limit_alc %></h2>
+          <% else %>
+            <span class="yellow_emp"><%= @limit_alc.round %></span>g
+          <% end %>
+        </div>  
+      </div>
+      <div class="limit__result-advise">
+        <p>酒の強さ</p>
+        <div class="limit__result-advise-content">
+          <% if @limit_alc == "-" %>
+            <h2 style="text-align: center;"><%= @limit_alc %></h2>
+          <% else %>
+            <% if @toughness_avg < 15 %>
+                あなたは酒が<span class="yellow_emp">弱い</span>です！<br>
+                自分のペースを守ってお酒を飲みましょう。
+            <% elsif @toughness_avg >= 15 && @toughness_avg < 30 %>
+                あなたの酒の強さは<span class="yellow_emp">普通</span>です！<br>
+                水を適度に挟みながらお酒を飲みましょう。
+            <% else %>
+                あなたは酒が<span class="yellow_emp">強い</span>です！<br>
+                ただし、強さを過信せず自分の限界を意識しながら飲みましょう。
+            <% end %>
+          <% end %>
+        </div>  
+      </div>
+    </div>
+    <div class="limit__result-conversion">
+      <!-- 右側に表示する内容 -->
+      <p>お酒は以下の量を守りましょう</p>
+      <ul>
+        <li>
+          <div class="limit__result-item">ビール
+          <span aria-label="中ジョッキ（1杯あたり350cc）の杯数です。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span></div><div class="limit__result-value">
+          <span class="<%= @limit_alc == "-" ? '' : 'highlighted' %>"><%= @limit_alc == "-" ? "-" : "#{@beer_mugs}杯" %></span></div>
+        </li>
+        <li>
+          <div class="limit__result-item">ハイボール
+          <span aria-label="中ジョッキ（1杯あたり350cc）の杯数です。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span></div><div class="limit__result-value">
+          <span class="<%= @limit_alc == "-" ? '' : 'highlighted' %>"><%= @limit_alc == "-" ? "-" : "#{@highball_mugs}杯" %></span></div>
+        </li>
+        <li>
+          <div class="limit__result-item">チューハイ
+          <span aria-label="中ジョッキ（1杯あたり350cc）の杯数です。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span></div><div class="limit__result-value">
+          <span class="<%= @limit_alc == "-" ? '' : 'highlighted' %>"><%= @limit_alc == "-" ? "-" : "#{@chuhi_mugs}杯" %></span></div>
+        </li>
+        <li>
+          <div class="limit__result-item">日本酒
+          <span aria-label="おちょこ（1杯あたり45cc）の杯数です。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span></div><div class="limit__result-value">
+          <span class="<%= @limit_alc == "-" ? '' : 'highlighted' %>"><%= @limit_alc == "-" ? "-" : "#{@sake_mugs}杯" %></span></div>
+        </li>
+        <li>
+          <div class="limit__result-item">ワイン
+          <span aria-label="グラス（1杯あたり120cc）の杯数です。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span></div><div class="limit__result-value">
+          <span class="<%= @limit_alc == "-" ? '' : 'highlighted' %>"><%= @limit_alc == "-" ? "-" : "#{@wine_mugs}杯" %></span></div>
+        </li>
+        <li>
+          <div class="limit__result-item">ウイスキー
+          <span aria-label="ストレート/ロック（1杯あたり30cc）の杯数です。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span></div><div class="limit__result-value">
+          <span class="<%= @limit_alc == "-" ? '' : 'highlighted' %>"><%= @limit_alc == "-" ? "-" : "#{@whiskey_mugs}杯" %></span></div>
+        </li>
+        <li>
+          <div class="limit__result-item">焼酎
+          <span aria-label="ストレート/ロック/ソーダ割（1杯あたり90cc）の杯数です。" data-microtip-position="top-right" role="tooltip"><%= image_tag 'info.png', class: 'info-button' %></span></div><div class="limit__result-value">
+          <span class="<%= @limit_alc == "-" ? '' : 'highlighted' %>"><%= @limit_alc == "-" ? "-" : "#{@shochu_mugs}杯" %></span></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ul class="limit__caption caption">
+    <li><h3>飲酒データ</h3></li>
+  </ul>
+  <div class="drink-data">
+    <div class="drink-graph">
+      <span class="limit__title-span">今月の飲酒量</span>
+      <%= line_chart @alc_hash, xtitle: "日付", ytitle: "アルコール量(g)", colors: ["#FF7F50"], curve: false, library: { curveType: 'function' } %>
+    </div>
+    <div class="drink_other-data">
+      <span class="limit__title-span">その他のデータ</span>
+      <span aria-label="全期間のデータを元に算出されます。" data-microtip-position="top" role="tooltip"><%= image_tag 'info.png', class: 'limit__info' %></span>
+      <div class="other-data-element">
+        <div class="other-data-element__content">
+          <p>平均アルコール摂取量</p>
+          <span class="other-data-element__content-value yellow_emp"><%= @alc_avg %></span>g
+        </div>
+        <div class="other-data-element__content">
+          <p>飲み過ぎ率</p>
+          <span class="other-data-element__content-value yellow_emp"><%= @overdrinking_ratio %></span>%
+        </div>
+        <div class="other-data-element__content">
+          <p>総泥酔回数</p>
+          <span class="other-data-element__content-value yellow_emp"><%= @dead_drunk_count %></span>回
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

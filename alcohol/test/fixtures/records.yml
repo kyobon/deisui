@@ -1,0 +1,27 @@
+overdrinking_record:
+  hours: 2
+  minutes: 0
+  drink_day: 2024-11-14
+  beer: 2500
+  highball: 0
+  chuhi: 0
+  sake: 0
+  wine: 0
+  whiskey: 0
+  shochu: 0
+  drunk: "ふらふらする/呂律が回らない"
+  user: shige # 既存のユーザーFixture名を指定
+
+drinking_record:
+  hours: 2
+  minutes: 0
+  drink_day: 2024-11-09
+  beer: 1000
+  highball: 0
+  chuhi: 0
+  sake: 0
+  wine: 0
+  whiskey: 0
+  shochu: 0
+  drunk: "ほろ酔い"
+  user: michael # 既存のユーザーFixture名を指定
