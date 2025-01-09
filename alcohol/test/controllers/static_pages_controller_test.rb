@@ -1,15 +1,17 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  #root_urlへのGetアクセス確認
-  test "GET access to root_url" do
+  # root_urlへのGetアクセス確認
+  test 'GET access to root_url' do
     get root_url
     assert_response :success
-    assert_select "title", "泥酔ストッパー"
+    assert_select 'title', '泥酔ストッパー'
   end
 
-  #top_pathへのGetアクセス確認
-  test "GET access to top_path" do
+  # top_pathへのGetアクセス確認
+  test 'GET access to top_path' do
     get top_path
     assert_response :success
   end

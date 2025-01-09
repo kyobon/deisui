@@ -1,22 +1,21 @@
-class SessionsController < ApplicationController
+# frozen_string_literal: true
 
-  def new
-  end
+class SessionsController < ApplicationController
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       if user.activated?
-        forwarding_url = session[:forwarding_url]
+        session[:forwarding_url]
         reset_session
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
         log_in user
-        redirect_to root_url
       else
-        message  = "アカウントは有効化されていません。有効化リンクにアクセスしてください。"
+        message = 'アカウントは有効化されていません。有効化リンクにアクセスしてください。'
         flash[:warning] = message
-        redirect_to root_url
       end
+      redirect_to root_url
     else
       flash.now[:danger] = 'メールアドレスまたはパスワードが間違っています。'
       render 'new', status: :unprocessable_entity

@@ -15,6 +15,8 @@ gem "htmlbeautifier"
 gem "chartkick"  #chartkickを導入するためのgem
 gem "groupdate"  #グラフの横軸の単位を「日付ごと」で表示できるgem
 gem 'dotenv-rails' #環境変数を管理するgem
+gem 'onkcop', require: false #rubocopの拡張版gem
+gem 'rubocop-rails' #コードの自動補正を行うgem
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

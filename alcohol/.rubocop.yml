@@ -1,0 +1,37 @@
+require:
+  - rubocop-rails
+
+inherit_gem:
+  onkcop:
+    - "config/rails.yml"
+    - "config/rspec.yml"
+
+AllCops:
+  TargetRubyVersion: 3.3.3
+  TargetRailsVersion: 7.1.4
+  NewCops: enable
+  Exclude: 
+    - "bin/**/*" 
+    - "config/**/*"
+    - "db/**/*"
+    - "lib/**/*"
+    - "log/**/*"
+    - "public/**/*"
+    - "spec/**/*"
+    - "storage/**/*"
+    - "tmp/**/*"
+    - "vendor/**/*"
+    - ".dockerignore"
+    - ".env"
+    - ".gitattributes"
+    - ".gitignore"
+    - ".rspec"
+    - ".rubocop.yml"
+    - ".ruby-version"
+    - "config.ru"
+    - "db_dump.sql"
+    - "Dockerfile"
+    - "Gemfile"
+    - "Gemfile.lock"
+    - "microtip"
+    - "Rakefile"
