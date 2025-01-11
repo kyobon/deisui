@@ -41,7 +41,7 @@ RSpec.describe User, type: :model do
 
   #ユーザ名の長さの最大が50であることを確認
   it "name should not be too long" do
-    @user.name = "a" * 47
+    @user.name = "a" * 51
     expect(@user).not_to be_valid
     expect(@user.errors[:name]).to include("名前は50文字以下にしてください。")
   end
