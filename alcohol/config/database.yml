@@ -16,7 +16,7 @@ test:
   <<: *default
   # database: db/test.sqlite3 変更
   database: Alcohol_test
-  password: 
+  password: password
   host: 127.0.0.1
 
 production:
