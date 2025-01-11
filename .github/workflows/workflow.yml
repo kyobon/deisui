@@ -61,6 +61,7 @@ jobs:
   CD:
     name: push image to ECR and deploy to ECS
     runs-on: ubuntu-latest
+    needs: CI
     timeout-minutes: 10
     permissions:
       id-token: write
