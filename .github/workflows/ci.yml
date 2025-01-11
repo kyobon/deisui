@@ -41,6 +41,7 @@ jobs:
 
     - name: Set up database
       run: |
+        cd alcohol
         rails db:create
         rails db:migrate
       env:
