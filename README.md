@@ -4,7 +4,7 @@
 
 ## 1. アプリ説明
 ### 概要
-- 「泥酔ストッパー」はお酒の飲み過ぎで失敗する人を減らすために、飲酒量を管理するためのアプリです。
+- 「泥酔ストッパー」はお酒の飲み過ぎで失敗する人を減らすために、飲酒量の管理・アルコールの許容量を算出するためのアプリです。
 - 飲酒量をカレンダーに記録していくことで、年月日単位でどれくらいの量のアルコールを摂取したのかが可視化されます。
 - 飲酒した日の飲酒量と、その日の酔い具合から1回の飲み会あたりに飲んでいいお酒の量が算出されるため、飲み過ぎを防ぐことができます。
 
@@ -49,7 +49,7 @@ https://github.com/user-attachments/assets/45aa919f-ed83-427f-8a61-d125e55f638f
 - バックエンド：Ruby on Rails
 - インフラ：AWS（コンテナ基盤はFargate、DBはRDS PostgreSQL）
 - IaC：CloudFormation
-- CI/CD：GitHub Actions CircleCI
+- CI/CD：GitHub Actions
 
 ### AWS構成図
 ![alcohol_構成図 drawio](https://github.com/user-attachments/assets/9809d438-a314-4df5-afce-a42b1771e5da)
