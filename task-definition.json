@@ -1,0 +1,105 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "web",
+            "image": "396913728688.dkr.ecr.ap-northeast-1.amazonaws.com/alcohol-app",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "web-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "secrets": [
+                {
+                    "name": "DATABASE_NAME",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/DATABASE_NAME"
+                },
+                {
+                    "name": "DATABASE_URL",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/DATABASE_URL"
+                },
+                {
+                    "name": "POSTGRES_PASSWORD",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/POSTGRES_PASSWORD"
+                },
+                {
+                    "name": "POSTGRES_USER",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/POSTGRES_USER"
+                },
+                {
+                    "name": "RAILS_ENV",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/RAILS_ENV"
+                },
+                {
+                    "name": "RAILS_SERVE_STATIC_FILES",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/RAILS_SERVE_STATIC_FILES"
+                },
+                {
+                    "name": "RDS_ENDPOINT",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/RDS_ENDPOINT"
+                },
+                {
+                    "name": "SENDER_ADDRESS",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/SENDER_ADDRESS"
+                },
+                {
+                    "name": "SENDGRID_API_KEY",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/SENDGRID_API_KEY"
+                },
+                {
+                    "name": "SUPER_USER_EMAIL",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/SUPER_USER_EMAIL"
+                },
+                {
+                    "name": "SUPER_USER_NAME",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/SUPER_USER_NAME"
+                },
+                {
+                    "name": "SUPER_USER_PASSWORD",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/SUPER_USER_PASSWORD"
+                },
+                {
+                    "name": "RAILS_MASTER_KEY",
+                    "valueFrom": "arn:aws:ssm:ap-northeast-1:396913728688:parameter/alcohol/RAILS_MASTER_KEY"
+                }
+            ],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/alcohol-task-definition",
+                    "mode": "non-blocking",
+                    "awslogs-create-group": "true",
+                    "max-buffer-size": "25m",
+                    "awslogs-region": "ap-northeast-1",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "alcohol-task-definition",
+    "executionRoleArn": "arn:aws:iam::396913728688:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "volumes": [],
+    "placementConstraints": [],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "512",
+    "memory": "1024",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    }
+}
