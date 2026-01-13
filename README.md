@@ -37,6 +37,8 @@ https://stop-deisui.com
 https://github.com/user-attachments/assets/d4750e7c-670a-4033-bf60-d5baf83ed035
 
 
+[デモ1](README_assets/demo-1.mov)
+
 #### 許容量の表示
 ※カレンダーに酔いの程度が「ふらふらする/呂律が回らない」または「泥酔」の日の記録がないと表示されないため注意。
 
@@ -55,6 +57,8 @@ https://github.com/user-attachments/assets/45aa919f-ed83-427f-8a61-d125e55f638f
 
 ### AWS構成図
 ![alcohol_構成図 drawio](https://github.com/user-attachments/assets/9809d438-a314-4df5-afce-a42b1771e5da)
+
+![AWS構成図](README_assets/aws-configration.png)
 
 ### 許容量算出のロジック
 人の酔いの具合は、血中アルコール濃度によって決まりますが、この血中アルコール濃度の計算方法としてウィドマーク法というものがあります。
